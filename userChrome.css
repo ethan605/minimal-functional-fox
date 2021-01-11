@@ -1,37 +1,45 @@
- :root {
+:root {
+  /* Snazzy colours */
+  --black: #2a2a38;
+  --red: #ff5c57;
+  --green: #5af78e;
+  --blue: #57c7ff;
+  --magenta: #ff6ac1;
+  --yellow: #f3f99d;
+  --cyan: #9aedfe;
+  --white: #eff0eb;
 
-   /* Minimal Functional Fox variables*/
-  --mff-bg: #292f36;
-  --mff-icon-color: #e0fbfc;
+  /* Minimal Functional Fox variables*/
+  --mff-bg: var(--black);
+  --mff-icon-color: var(--white);
   --mff-nav-toolbar-padding: 8px;
-  --mff-sidebar-bg: var(--mff-bg);
-  --mff-sidebar-color: #e0fbfc;
+  --mff-sidebar-bg: var(--black);
+  --mff-sidebar-color: var(--white);
   --mff-tab-border-radius: 0px;
-  --mff-tab-color: #fefefa;
+  --mff-tab-color: var(--white);
   --mff-tab-font-family: "Cantarell", sans;
   --mff-tab-font-size: 11pt;
   --mff-tab-font-weight: 400;
   --mff-tab-height: 32px;
-  --mff-tab-pinned-bg: #70c1b3;
-  --mff-tab-selected-bg: #ee6c4d;
-  --mff-tab-soundplaying-bg: #9c89b8;
-  --mff-urlbar-color: #98c1d9;
-  --mff-urlbar-focused-color: #e0fbfc;
+  --mff-tab-pinned-bg: var(--magenta);
+  --mff-tab-selected-bg: var(--blue);
+  --mff-tab-selected-color: var(--black);
+  --mff-tab-soundplaying-bg: var(--magenta);
+  --mff-urlbar-color: var(--yellow);
+  --mff-urlbar-focused-color: var(--white);
   --mff-urlbar-font-family: "Cantarell", serif;
   --mff-urlbar-font-size: 12pt;
   --mff-urlbar-font-weight: 700;
-  --mff-urlbar-results-color: #e0fbfc;
+  --mff-urlbar-results-color: var(--white);
   --mff-urlbar-results-font-family: "mononoki Nerd Font", serif;
   --mff-urlbar-results-font-size: 12pt;
   --mff-urlbar-results-font-weight: 700;
-  --mff-urlbar-results-url-color: #98c1d9;
-  /*   --mff-tab-selected-bg: linear-gradient(90deg, rgba(232,74,95,1) 0%, rgba(255,132,124,1) 50%, rgba(254,206,168,1) 100%); */
-  /*   --mff-urlbar-font-weight: 600; */
+  --mff-urlbar-results-url-color: var(--yellow);
 
   /* Overriden Firefox variables*/
   --autocomplete-popup-background: var(--mff-bg) !important;
   --default-arrowpanel-background: var(--mff-bg) !important;
-  --default-arrowpanel-color: #fefefa !important;
+  --default-arrowpanel-color: var(--white) !important;
   --lwt-toolbarbutton-icon-fill: var(--mff-icon-color) !important;
   --panel-disabled-color: #f9f9fa80;
   --toolbar-bgcolor: var(--mff-bg) !important;
@@ -75,7 +83,7 @@
 }
 
 .tab-close-button {
- display: none !important;
+  display: none !important;
 }
 
 .tab-text {
@@ -85,30 +93,33 @@
   color: var(--mff-tab-color);
 }
 
+.tab-text[selected="true"] {
+  color: var(--mff-tab-selected-color) !important;
+}
+
 /* Hide the favicon for tabs */
 hbox.tab-content .tab-icon-image {
   display: none !important;
 }
 
 /* Show the favicon for tabs that are pinned */
-hbox.tab-content[pinned=true] .tab-icon-image {
+hbox.tab-content[pinned="true"] .tab-icon-image {
   display: initial !important;
 }
 
-hbox.tab-content[pinned=true] .tab-text {
+hbox.tab-content[pinned="true"] .tab-text {
   display: none !important;
 }
 
 #tabbrowser-tabs {
   --tab-loading-fill: #033433 !important;
-
 }
 
 .tab-label-container:not([textoverflow]) {
   display: flex;
   overflow: hidden;
   justify-content: center;
-width: 50% !important;
+  width: 50% !important;
   max-width: 50% !important;
   min-width: 50% !important;
 }
@@ -159,15 +170,14 @@ width: 50% !important;
 }
 
 .toolbarbutton-text {
-  color: var(--mff-icon-color)  !important;
+  color: var(--mff-icon-color) !important;
 }
 .urlbar-icon {
-  color: var(--mff-icon-color)  !important;
-
+  color: var(--mff-icon-color) !important;
 }
 
 .toolbarbutton-icon {
-/* filter: drop-shadow(0 0 0.75rem crimson); */
+  /* filter: drop-shadow(0 0 0.75rem crimson); */
 }
 
 #urlbar-results {
@@ -177,22 +187,24 @@ width: 50% !important;
   color: var(--mff-urlbar-results-color) !important;
 }
 
-.urlbarView-row[type="bookmark"] > span{
+.urlbarView-row[type="bookmark"] > span {
   color: green !important;
 }
 
-.urlbarView-row[type="switchtab"] > span{
+.urlbarView-row[type="switchtab"] > span {
   color: orange !important;
 }
 
-.urlbarView-url, .search-panel-one-offs-container {
+.urlbarView-url,
+.search-panel-one-offs-container {
   color: var(--mff-urlbar-results-url-color) !important;
   font-family: var(--mff-urlbar-font-family);
   font-weight: var(--mff-urlbar-results-font-weight);
   font-size: var(--mff-urlbar-font-size) !important;
 }
 
-.urlbarView-favicon, .urlbarView-type-icon {
+.urlbarView-favicon,
+.urlbarView-type-icon {
   display: none !important;
 }
 
@@ -200,15 +212,16 @@ width: 50% !important;
   font-size: var(--mff-urlbar-font-size) !important;
   color: var(--mff-urlbar-color) !important;
   font-family: var(--mff-urlbar-font-family) !important;
-  font-weight: var(--mff-urlbar-font-weight)!important;
+  font-weight: var(--mff-urlbar-font-weight) !important;
   text-align: center !important;
 }
 
-#tracking-protection-icon-container, #identity-box {
+#tracking-protection-icon-container,
+#identity-box {
   display: none;
 }
 
-#back-button > .toolbarbutton-icon{
+#back-button > .toolbarbutton-icon {
   --backbutton-background: transparent !important;
   border: none !important;
 }
@@ -226,10 +239,11 @@ toolbar {
 }
 
 #urlbar-background {
-  opacity: .98 !important;
+  opacity: 0.98 !important;
 }
 
-#navigator-toolbox, toolbaritem {
+#navigator-toolbox,
+toolbaritem {
   border: none !important;
 }
 
@@ -260,7 +274,7 @@ tab.tabbrowser-tab {
 }
 
 tab.tabbrowser-tab:hover {
-  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 image#star-button {
@@ -278,13 +292,12 @@ toolbar#nav-bar {
 #urlbar {
   max-width: 70% !important;
   margin: 0 15% !important;
-  /* 	position: unset!important; */;
+  /* position: unset !important; */
 }
 
 #urlbar-input:focus {
   color: var(--mff-urlbar-focused-color) !important;
 }
-
 
 .megabar[breakout-extend="true"]:not([open="true"]) > #urlbar-background {
   box-shadow: none !important;
@@ -295,7 +308,6 @@ toolbarbutton {
   box-shadow: none !important;
 }
 
-
 /*
   ___ ___ ___  ___ ___   _   ___
  / __|_ _|   \| __| _ ) /_\ | _ \
@@ -303,7 +315,8 @@ toolbarbutton {
  |___/___|___/|___|___/_/ \_\_|_\
 */
 
-.close-icon, .urlbar-icon {
+.close-icon,
+.urlbar-icon {
   fill: var(--mff-icon-color) !important;
 }
 
@@ -312,7 +325,7 @@ toolbarbutton {
 }
 
 #sidebar-switcher-target {
-/*   color: white !important; */
+  /* color: white !important; */
 }
 
 #sidebar-box {
@@ -331,7 +344,6 @@ splitter#sidebar-splitter {
 image#sidebar-icon {
   display: none;
 }
-
 
 /*
     _   ___ ___  _____      _____  _   _  _ ___ _
