@@ -15,12 +15,13 @@
   --mff-nav-toolbar-padding: 8px;
   --mff-sidebar-bg: var(--black);
   --mff-sidebar-color: var(--white);
+  --mff-gap: 4px;
   --mff-tab-border-radius: 0px;
   --mff-tab-color: var(--white);
   --mff-tab-font-family: "Cantarell", sans;
   --mff-tab-font-size: 11pt;
   --mff-tab-font-weight: 400;
-  --mff-tab-height: 32px;
+  --mff-tab-height: 36px;
   --mff-tab-pinned-bg: var(--magenta);
   --mff-tab-selected-bg: var(--blue);
   --mff-tab-selected-color: var(--black);
@@ -54,7 +55,7 @@
 
 */
 
-.tab-background[selected="true"] {
+.tab-background[selected] {
   background: var(--mff-tab-selected-bg) !important;
 }
 
@@ -74,11 +75,12 @@
 }
 
 .tab-background {
+  border-radius: var(--mff-tab-border-radius) !important;
   border: none !important;
 }
 
 .tabbrowser-arrowscrollbox {
-  margin-inline-start: 4px !important;
+  margin-inline-start: var(--mff-gap) !important;
   margin-inline-end: 0px !important;
 }
 
@@ -91,9 +93,10 @@
   font-weight: var(--mff-tab-font-weight);
   font-size: var(--mff-tab-font-size) !important;
   color: var(--mff-tab-color);
+  margin-bottom: var(--mff-gap) !important;
 }
 
-.tab-text[selected="true"] {
+.tab-text[selected] {
   color: var(--mff-tab-selected-color) !important;
 }
 
@@ -103,11 +106,11 @@ hbox.tab-content .tab-icon-image {
 }
 
 /* Show the favicon for tabs that are pinned */
-hbox.tab-content[pinned="true"] .tab-icon-image {
+hbox.tab-content[pinned] .tab-icon-image {
   display: initial !important;
 }
 
-hbox.tab-content[pinned="true"] .tab-text {
+hbox.tab-content[pinned] .tab-text {
   display: none !important;
 }
 
@@ -115,7 +118,7 @@ hbox.tab-content[pinned="true"] .tab-text {
   --tab-loading-fill: #033433 !important;
 }
 
-.tab-label-container:not([textoverflow]) {
+.tab-label-container:not([textoverflow]):not([pinned]) {
   display: flex;
   overflow: hidden;
   justify-content: center;
@@ -124,11 +127,9 @@ hbox.tab-content[pinned="true"] .tab-text {
   min-width: 50% !important;
 }
 
-/*
-.tab-label-container::after {
-  content: "?" !important;
+.tab-label-container[pinned]::after {
+  content: "" !important;
 }
-*/
 
 .tab-line {
   display: none !important;
@@ -138,24 +139,47 @@ hbox.tab-content[pinned="true"] .tab-text {
   border-radius: var(--mff-tab-border-radius) !important;
   border-width: 0;
   height: var(--mff-tab-height) !important;
-  margin-bottom: 4px !important;
-  margin-inline-end: 4px !important;
-  margin-top: 4px !important;
+  margin-bottom: var(--mff-gap) !important;
+  margin-inline-end: var(--mff-gap) !important;
+  margin-top: var(--mff-gap) !important;
   max-height: var(--mff-tab-height) !important;
   min-height: var(--mff-tab-height) !important;
 }
 
-.tabbrowser-tab[soundplaying="true"] {
+.tabbrowser-tab[soundplaying] {
   background-color: var(--mff-tab-soundplaying-bg) !important;
+  padding: 0 !important;
 }
+
+.tabbrowser-tab[soundplaying] .tab-background {
+  background: var(--mff-bg) !important;
+}
+
+.tabbrowser-tab[soundplaying] .tab-background[selected] {
+  background: var(--mff-tab-selected-bg) !important;
+}
+
+.tabbrowser-tab[soundplaying] .tab-label-container::after {
+  content: "" !important;
+}
+
+.tab-icon-overlay[soundplaying][pinned],
+.tab-icon-overlay[muted][pinned],
+.tab-icon-overlay[activemedia-blocked][pinned] {
+  display: none !important;
+}
+
+/* .tab-icon-sound {
+  display: none !important;
+}
+
+.tab-icon-sound[pinned] {
+  display: none !important;
+} */
 
 #tabs-newtab-button {
   list-style-image: url("add.svg") !important;
   opacity: 0.7;
-}
-
-.tab-icon-sound {
-  display: none !important;
 }
 
 /*
@@ -275,7 +299,7 @@ tab.tabbrowser-tab {
 }
 
 tab.tabbrowser-tab:hover {
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px var(--mff-gap) rgba(0, 0, 0, 0.05);
 }
 
 image#star-button {
@@ -287,7 +311,7 @@ toolbar#nav-bar {
 }
 
 toolbar#nav-bar {
-  padding: 4px !important;
+  padding: var(--mff-gap) !important;
 }
 
 #urlbar {
@@ -300,7 +324,7 @@ toolbar#nav-bar {
   color: var(--mff-urlbar-focused-color) !important;
 }
 
-.megabar[breakout-extend="true"]:not([open="true"]) > #urlbar-background {
+.megabar[breakout-extend]:not([open]) > #urlbar-background {
   box-shadow: none !important;
   background-color: transparent !important;
 }
