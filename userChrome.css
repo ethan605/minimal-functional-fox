@@ -333,6 +333,13 @@ toolbarbutton {
   box-shadow: none !important;
 }
 
+#toolbar-menubar,
+#menubar-items,
+#main-menubar {
+  background-color: var(--mff-bg) !important;
+  background-image: none !important;
+}
+
 /*
   ___ ___ ___  ___ ___   _   ___
  / __|_ _|   \| __| _ ) /_\ | _ \
