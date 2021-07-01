@@ -14,7 +14,10 @@ download_mff() {
         USERCONTENT="/tmp/minimal-functional-fox-master/userContent.css"
         cp -r --backup=simple -t "$CHROME_DIRECTORY" $USERCHROME $USERCONTENT
         rm -f USERCHROME USERCONTENT
-        cp -r /tmp/minimal-functional-fox-master/* "$CHROME_DIRECTORY"
+
+        # Copy related files only
+        cp -r /tmp/minimal-functional-fox-master/*.css "$CHROME_DIRECTORY"
+        cp -r /tmp/minimal-functional-fox-master/*.svg "$CHROME_DIRECTORY"
 
         if [[ $? -eq 0 ]]; then
             rm -rf /tmp/minimal-functional-fox-master
